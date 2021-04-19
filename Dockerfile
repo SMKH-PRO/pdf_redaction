@@ -2,6 +2,8 @@ FROM python:3.8
 # Copy requirements.txt to the docker image and install packages
 COPY requirements.txt /
 RUN pip install -r requirements.txt
+RUN apt-get update && apt-get -y install poppler-utils && apt-get clean
+
 # Set the WORKDIR to be the folder
 COPY . /app
 WORKDIR /app
